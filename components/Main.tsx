@@ -28,6 +28,10 @@ const Main = () => {
         return null;
     }
 
+    const winner=checkWinner(board);
+    let display = winner 
+    && (winner === "T" ? "Tie Match" : `${winner==='X' ? ' You Won' : 'Computer won'}`) 
+
     useEffect(()=> {
         if(!xIsNext) {
             setBoard((prevBoard)=> {
@@ -90,12 +94,12 @@ const Main = () => {
         })
         setTimeout(()=> {
             setXIsNext(false);
+            display = winner 
+            && (winner === "T" ? "Tie Match" : `${winner==='X' ? ' You Won' : 'Computer won'}`) 
         },500)
     }
 
-    const winner=checkWinner(board);
 
-    const display=winner ? winner==="T" ? "Tie Match" : ` winner ${winner}`:xIsNext? 'Next is X':'Next is O';
 
     console.log("board",board);
 
